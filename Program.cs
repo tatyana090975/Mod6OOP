@@ -57,14 +57,7 @@ namespace Mod6OOP
             {
                 return hours;
             }
-            /*public int Minutes()
-            {
-                return minutes;
-            }*/
-            /*public int Seconds()
-            {
-                return seconds;
-            }*/
+            
         }
         class Pen
         {
