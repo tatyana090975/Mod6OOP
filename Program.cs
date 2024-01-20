@@ -6,48 +6,47 @@ using System.Threading.Tasks;
 
 namespace Mod6OOP
 {
-    struct Data
+    class Company
     {
+        public string Type;
         public string Name;
-        public int Length;
-        public int Version;
-        public int[] Array;
     }
 
-    class Obj
+    class Department 
+    {
+        public Company MyCompany = new Company();
+        public City MyCity = new City();
+       
+    }
+
+    class City
     {
         public string Name;
-        public bool IsAlive;
-        public int Weight;
     }
 
     internal class Program
-    {
-        
+    {        
         static void Main(string[] args)
-        {
-            Data data = new Data { Name = "Запись", Length = 10, Version = 1, Array = new int[] { 15, 30 } };
-            Obj obj = new Obj { Name = "Стол", IsAlive = false, Weight = 15 };
+        {           
+            var department = GetCurrentDepartment();
 
-            var dataCopy = data;
-            var objCopy = obj;
-
-            data.Name = "Значение";
-            data.Length = 35;
-            data.Version = 2;
-            data.Array[0] = 0;
-
-            obj.Name = "Кот";
-            obj.IsAlive = true;
-            obj.Weight = 3;
-
-            objCopy = new Obj { Name = obj.Name, IsAlive = obj.IsAlive, Weight = obj.Weight };
-
-            obj.Name = "Стол";
-            obj.IsAlive = false;
-            obj.Weight = 15;
-            
             Console.ReadKey();
-        }        
+        }
+        static Department GetCurrentDepartment()
+        {
+            City city = new City { Name = "Санкт-Петербург" };
+            Company company = new Company { Type = "Банк" };
+            Department department = new Department();
+            department.MyCity = city;
+            department.MyCompany = company;
+
+            if (department?.MyCompany?.Type == "Банк" && department?.MyCity?.Name == "Санкт-Петербург")
+            {
+                Console.WriteLine("У банка {0} есть отделение в Санкт-Петербурге", department?.MyCompany.Name ?? "Неизвестная компания");
+            } 
+            
+            return department;
+        }
+
     }
 }
