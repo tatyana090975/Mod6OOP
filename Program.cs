@@ -6,47 +6,34 @@ using System.Threading.Tasks;
 
 namespace Mod6OOP
 {
-    class Company
+    class Bus
     {
-        public string Type;
-        public string Name;
-    }
+        public int? Load;
 
-    class Department 
-    {
-        public Company MyCompany = new Company();
-        public City MyCity = new City();
-       
-    }
-
-    class City
-    {
-        public string Name;
+        public void PrintStatus()
+        {
+            if (Load != null && Load > 0)
+            {
+                Console.WriteLine("В автобусе {0} пассажиров", Load ?? 0);
+            }
+            else
+            {
+                Console.WriteLine("В автобусе нет пассажиров");
+            }
+        }
     }
 
     internal class Program
     {        
         static void Main(string[] args)
-        {           
-            var department = GetCurrentDepartment();
+        {
+            Bus bus = new Bus { Load = -3};
+            bus.PrintStatus();
+
 
             Console.ReadKey();
         }
-        static Department GetCurrentDepartment()
-        {
-            City city = new City { Name = "Санкт-Петербург" };
-            Company company = new Company { Type = "Банк" };
-            Department department = new Department();
-            department.MyCity = city;
-            department.MyCompany = company;
-
-            if (department?.MyCompany?.Type == "Банк" && department?.MyCity?.Name == "Санкт-Петербург")
-            {
-                Console.WriteLine("У банка {0} есть отделение в Санкт-Петербурге", department?.MyCompany.Name ?? "Неизвестная компания");
-            } 
-            
-            return department;
-        }
+        
 
     }
 }
