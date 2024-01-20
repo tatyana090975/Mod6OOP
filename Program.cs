@@ -6,87 +6,48 @@ using System.Threading.Tasks;
 
 namespace Mod6OOP
 {
-    class Rectangle
+    struct Data
     {
-        public int a; public int b;
-        public Rectangle(int c, int d)
-        {
-            a = c; b = d;
-        }
-        public Rectangle(int c)
-        {
-            a = b = c;
-        }
-        public Rectangle()
-        {
-            a = 6; b = 4;
-        }
-        public int Square(int a, int b)
-        {
-            return a* b;
-            
-        }
+        public string Name;
+        public int Length;
+        public int Version;
+        public int[] Array;
+    }
+
+    class Obj
+    {
+        public string Name;
+        public bool IsAlive;
+        public int Weight;
     }
 
     internal class Program
     {
-        struct Animal
-        {
-            public string type;
-            public string name;
-            public int age;
-            
-            public Animal(string tt, string nn, int aa)
-            {
-                type = tt;
-                name = nn;
-                age = aa;
-            }
-        }
-
-        struct Time
-        {
-            private int hours;
-            public Time(int hh)
-            {
-                hours = hh;
-                //minutes = 20;
-                //seconds = ss;
-            }
-            public int Hours()
-            {
-                return hours;
-            }
-            
-        }
-        class Pen
-        {
-            public string color;
-            public int cost;
-
-            public Pen()
-            {
-                color = "черный";
-                cost = 100;
-            }
-            public Pen(string penColor, int costColor)
-            {
-                color = penColor;
-                cost = costColor;
-            }
-        }
+        
         static void Main(string[] args)
         {
-            Animal animal = new Animal {type = "Собака", name = "Вольт", age = 4 };
+            Data data = new Data { Name = "Запись", Length = 10, Version = 1, Array = new int[] { 15, 30 } };
+            Obj obj = new Obj { Name = "Стол", IsAlive = false, Weight = 15 };
 
+            var dataCopy = data;
+            var objCopy = obj;
 
-            //Time time = new Time(6);
+            data.Name = "Значение";
+            data.Length = 35;
+            data.Version = 2;
+            data.Array[0] = 0;
+
+            obj.Name = "Кот";
+            obj.IsAlive = true;
+            obj.Weight = 3;
+
+            objCopy = new Obj { Name = obj.Name, IsAlive = obj.IsAlive, Weight = obj.Weight };
+
+            obj.Name = "Стол";
+            obj.IsAlive = false;
+            obj.Weight = 15;
+            
             Console.ReadKey();
-
-        }
-        static void AddTen(ref int num)
-        {
-            num = num + 10;
-        }
+        }        
     }
 }
