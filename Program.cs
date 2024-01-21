@@ -7,6 +7,20 @@ using System.Threading.Tasks;
 
 namespace Mod6OOP
 {
+    class TrafficLight
+    {
+        public string color;
+
+        private void ChangeColor(string color)
+        {
+
+        }
+        public string GetColor ()
+        {
+            return color;
+        }
+    }
+
     class Bus
     {
         public int? Load;
